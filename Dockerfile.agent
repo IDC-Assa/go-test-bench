@@ -13,7 +13,7 @@ ARG FRAMEWORK=std
 RUN CGO_ENABLED=0 contrast-go build -o go-test-bench ./cmd/${FRAMEWORK}
 
 # Move the finished build to a more minimal container
-FROM alpine:latest
+FROM alpine:3.18.5
 COPY --from=builder /build/views ./views
 COPY --from=builder /build/public ./public
 COPY --from=builder /build/go-test-bench ./go-test-bench
